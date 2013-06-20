@@ -5,40 +5,15 @@ import java.util.Date;
 
 public class Webhook implements IPaymillObject {
 	public enum EventType {
-		CHARGEBACK_EXECUTED("chargeback.executed"), REFUND_SUCCEEDED(
-				"refund.succeeded"), REFUND_FAILED("refund.failed"), SUBSCRIPITON_SUCCEEDED(
-				"subscription.succeeded"), SUBSCRIPITON_FAILED(
-				"subscription.failed"), TRANSACTION_SUCCEEDED(
-				"transaction.succeeded"), TRANSACTION_FAILED(
-				"transaction.failed");
-
-		private String key;
-
-		public static EventType find(String name) {
-			for (EventType eventType : values()) {
-				if (eventType.toString().equals(name)) {
-					return eventType;
-				}
-			}
-			return null;
-		}
-
-		@Override
-		public String toString() {
-			return key;
-		}
-
-		private EventType(String key) {
-			this.key = key;
-		}
-
+		CHARGEBACK_EXECUTED, REFUND_SUCCEEDED, REFUND_FAILED, SUBSCRIPTION_SUCCEEDED, SUBSCRIPTION_FAILED, TRANSACTION_SUCCEEDED, TRANSACTION_FAILED;
 	}
 
 	private String id;
 	private URL url;
+	private String email;
 	private Date createdAt;
 	private Date updatedAt;
-	private String eventTypes;
+	private EventType[] eventTypes;
 
 	/**
 	 * @return the id
@@ -68,6 +43,21 @@ public class Webhook implements IPaymillObject {
 	 */
 	public void setUrl(URL url) {
 		this.url = url;
+	}
+
+	/**
+	 * @return the callback-email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email
+	 *            the callback-email
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	/**
@@ -104,14 +94,14 @@ public class Webhook implements IPaymillObject {
 	 * @param eventTypes
 	 *            the eventTypes to subscribe
 	 */
-	public void setEventTypes(String eventTypes) {
+	public void setEventTypes(EventType[] eventTypes) {
 		this.eventTypes = eventTypes;
 	}
 
 	/**
 	 * @return the event types
 	 */
-	public String getEventTypes() {
+	public EventType[] getEventTypes() {
 		return eventTypes;
 	}
 }

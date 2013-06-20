@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * @author Daniel Florey
+ * 
  */
 public class Transaction implements IPaymillObject {
 	public enum Status {
@@ -19,12 +21,15 @@ public class Transaction implements IPaymillObject {
 	private Integer originAmount;
 	private String currency;
 	private Status status;
+	private String responseCode;
 	private Date createdAt;
 	private Date updatedAt;
 	private Client client;
 	private Payment payment;
 	private String token;
 	private List<Refund> refunds;
+	private Preauthorization preauthorization;
+	private List<Fee> fees;
 
 	/**
 	 * @return the id
@@ -102,6 +107,14 @@ public class Transaction implements IPaymillObject {
 	}
 
 	/**
+	 * @return response code sett documentation for a list of available response
+	 *         codes
+	 */
+	public String getResponseCode() {
+		return responseCode;
+	}
+
+	/**
 	 * @return the createdAt
 	 */
 	public Date getCreatedAt() {
@@ -131,7 +144,6 @@ public class Transaction implements IPaymillObject {
 		this.updatedAt = updatedAt;
 	}
 
-
 	/**
 	 * @return the client
 	 */
@@ -140,7 +152,8 @@ public class Transaction implements IPaymillObject {
 	}
 
 	/**
-	 * @param client the client to set
+	 * @param client
+	 *            the client to set
 	 */
 	public void setClient(Client client) {
 		this.client = client;
@@ -204,6 +217,36 @@ public class Transaction implements IPaymillObject {
 	 */
 	public void setPayment(Payment payment) {
 		this.payment = payment;
+	}
+
+	/**
+	 * @return the preauthorization
+	 */
+	public Preauthorization getPreauthorization() {
+		return preauthorization;
+	}
+
+	/**
+	 * @param preauthorization
+	 *            the preauthorization to set
+	 */
+	public void setPreauthorization(Preauthorization preauthorization) {
+		this.preauthorization = preauthorization;
+	}
+
+	/**
+	 * @return the fees
+	 */
+	public List<Fee> getFees() {
+		return fees;
+	}
+
+	/**
+	 * @param fees
+	 *            the fees to set
+	 */
+	public void setFees(List<Fee> fees) {
+		this.fees = fees;
 	}
 
 }

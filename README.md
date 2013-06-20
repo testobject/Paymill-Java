@@ -1,5 +1,8 @@
-Paymill-Java
+paymill-java
 ============
+Java wrapper for Paymill API
+
+[![Build Status](https://travis-ci.org/paymill/paymill-java.png?branch=master)](https://travis-ci.org/paymill/paymill-java)
 
 Initialize the library by setting your api key:
 
@@ -10,7 +13,12 @@ You may provide the api key and api url through command line args by using the
 
 	java -DapiKey=<YOUR_API_KEY> -DapiUrl=<API_URL>
 
-The api url defaults to https://api.paymill.de/v2
+To run the tests:
+
+        mvn -DapiKey=<YOUR_API_KEY> test
+
+
+The api url defaults to https://api.paymill.com/v2
 
 Using services
 --------------
@@ -84,3 +92,4 @@ Further info
 ------------
 
 See our api reference for more examples: [https://www.paymill.com/en-gb/documentation-3/reference/api-reference/index.html]()
+

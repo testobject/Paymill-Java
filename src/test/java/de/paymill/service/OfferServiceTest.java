@@ -10,8 +10,8 @@ import org.junit.Test;
 import de.paymill.Paymill;
 import de.paymill.TestCase;
 import de.paymill.model.Client;
+import de.paymill.model.Interval;
 import de.paymill.model.Offer;
-import de.paymill.model.Offer.Interval;
 import de.paymill.model.Payment;
 import de.paymill.model.Payment.Type;
 import de.paymill.model.Subscription;
@@ -21,12 +21,15 @@ public class OfferServiceTest extends TestCase {
 	@Test
 	public void testCreateOffer() {
 		OfferService srv = Paymill.getService(OfferService.class);
+		Interval interval = new Interval();
+		interval.setInterval(1);
+		interval.setUnit(Interval.Unit.WEEK);
 		Offer params = new Offer();
 		params.setAmount(199);
-		params.setInterval(Interval.WEEK);
+		params.setInterval(interval);
 		params.setName("Superabo");
 		params.setTrialPeriodDays(15);
-		params.setCurrency("eur");
+		params.setCurrency("EUR");
 		
 		Offer offer = srv.create(params);
 		assertEquals("Superabo", offer.getName());
@@ -36,12 +39,15 @@ public class OfferServiceTest extends TestCase {
 	@Test
 	public void testGetOffer() {
 		OfferService srv = Paymill.getService(OfferService.class);
+		Interval interval = new Interval();
+		interval.setInterval(1);
+		interval.setUnit(Interval.Unit.WEEK);
 		Offer params = new Offer();
 		params.setAmount(199);
-		params.setInterval(Interval.WEEK);
+		params.setInterval(interval);
 		params.setName("Superabo");
 		params.setTrialPeriodDays(15);
-		params.setCurrency("eur");
+		params.setCurrency("EUR");
 		
 		Offer offer1 = srv.create(params);
 		Offer offer2 = srv.get(offer1.getId());
@@ -65,12 +71,15 @@ public class OfferServiceTest extends TestCase {
 		ClientService srvClient = Paymill.getService(ClientService.class);
 		PaymentService srvPayment = Paymill.getService(PaymentService.class);
 		
+		Interval interval = new Interval();
+		interval.setInterval(1);
+		interval.setUnit(Interval.Unit.WEEK);
 		Offer offer = new Offer();
 		offer.setAmount(199);
-		offer.setInterval(Interval.WEEK);
+		offer.setInterval(interval);
 		offer.setName("testabo");
 		offer.setTrialPeriodDays(15);
-		offer.setCurrency("eur");
+		offer.setCurrency("EUR");
 		offer = srvOffer.create(offer);
 		
 		Client client = new Client();

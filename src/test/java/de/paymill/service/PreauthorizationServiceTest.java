@@ -26,7 +26,7 @@ public class PreauthorizationServiceTest extends TestCase {
 			srv.get("idontexist");
 			fail("Expected exception");
 		} catch (ApiException ex) {
-			assertEquals("not_found_transaction_preauthorize", ex.getCode());
+			assertEquals("preauthorization_not_found", ex.getCode());
 		}
 	}
 
@@ -63,6 +63,23 @@ public class PreauthorizationServiceTest extends TestCase {
 
 		assertNotNull(tx);
 		assertNotNull(tx.getId());
+	}
+
+	@Test
+	public void testRemovePreauthorization() {
+            PreauthorizationService srv = Paymill.getService(PreauthorizationService.class);
+            List<Preauthorization> list = srv.list(0, 1, "created_at_desc");
+            Preauthorization preauthorization = srv.get(list.get(0).getId());
+            
+            String id = preauthorization.getId();
+            srv.delete(id);
+            
+            try {
+                    srv.get(id);
+            } catch (ApiException ex) {
+                    //ex.printStackTrace();
+                    assertEquals("preauthorization_not_found", ex.getCode());
+            }
 	}
 	
 	@Test
