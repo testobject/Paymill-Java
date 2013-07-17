@@ -4,15 +4,8 @@
 	<groupId>de.paymill</groupId>
 	<artifactId>paymill-java</artifactId>
 	<packaging>jar</packaging>
-	<version>2.6.snapshot</version>
 	<name>paymill-java</name>
 	<url>http://www.paymill.de</url>
-	<organization>
-		<name>Paymill GmbH</name>
-		<url>http://www.paymill.com</url>
-	</organization>
-
-
 	<dependencies>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -26,12 +19,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>1.7</version>
+		  <groupId>commons-codec</groupId>
+		  <artifactId>commons-codec</artifactId>
+		  <version>1.7</version>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -50,6 +42,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	<version>2.6.snapshot</version>
+	<organization>
+		<name>Paymill GmbH</name>
+		<url>http://www.paymill.com</url>
+	</organization>
+	
 	<distributionManagement>
 		<!-- use the following if you're not using a snapshot version. -->
 		<repository>
